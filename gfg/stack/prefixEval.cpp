@@ -1,0 +1,59 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+#define pb push_back
+#define us unordered_set
+#define um unordered_map
+
+//Evaluation of the prefix expression
+int prefixEval(string s){
+  stack<int> st;
+
+  //traversing the string from last
+  for(int i=s.size()-1;i>=0;i--){
+    if(s[i]>='0' && s[i]<='9'){
+      st.push(s[i]-'0');
+    }
+    else{
+      int op1=st.top();
+      st.pop();
+      int op2=st.top();
+      st.pop();
+
+      switch (s[i])
+      {
+      case '+':
+        st.push(op1+op2);
+        break;
+      case '-':
+        st.push(op1-op2);
+        break;
+      case '*':
+        st.push(op1*op2);
+        break;
+      case '/':
+        st.push(op1/op2);
+        break;
+      case '^':
+        st.push(pow(op1,op2));
+        break;
+      }
+    }
+  }
+
+  return st.top();
+}
+
+
+
+int main(){
+  #ifndef ONLINE_JUDGE
+    freopen("../input.txt","r",stdin);
+    freopen("../output.txt","w",stdout);
+  #endif
+
+  string s;
+  cin>>s;
+  cout<<prefixEval(s)<<endl;
+  return 0;
+}
