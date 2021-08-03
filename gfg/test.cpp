@@ -13,12 +13,13 @@ int main(){
     freopen("output.txt","w",stdout);
   #endif
 
-  stack<int> st;
-  st.push(1);
-  st.push(2);
-  // st.push();
-  st.push(3);
-  
-  
+  set<ll> s;
+  s.insert(10);
+  s.insert(20);
+  s.insert(30);
+  s.insert(40);
+  s.insert(50);
+
+  cout<<distance(s.begin(), s.find(40))<<endl;
   return 0;
 }
