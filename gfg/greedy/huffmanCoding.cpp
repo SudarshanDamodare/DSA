@@ -52,7 +52,6 @@ Node *buildTree(vector<char> c, vector<int> freq){
 
     pq.push(node);
   }
-  // inorder(pq.top());
 
   return pq.top();
 }
@@ -89,7 +88,5 @@ int main(){
   vector<char> c={'a','d','e','f'};
   vector<int> f={30,40,80,60};
   huffmanCode(c, f);
-  // Node *root=buildTree(c, f);
-  // inorder(root);
   return 0;
 }
