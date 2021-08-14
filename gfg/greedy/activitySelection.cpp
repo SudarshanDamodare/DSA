@@ -13,6 +13,7 @@ bool myComp(pair<int, int> a, pair<int, int> b){
 
 int activitySelection(vector<pair<int, int>> v){
   int n=v.size();
+  // sort by end time
   sort(v.begin(), v.end(), myComp);
   int prev=0;
   int res=1;
