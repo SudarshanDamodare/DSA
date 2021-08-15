@@ -15,7 +15,7 @@ void getIndegree(vector<int> adj[], int V, int indegree[]){
 }
 
 
-// Kahn's Algo
+// Kahn's Algo i.e using bfs
 void topologicalSorting(vector<int> adj[], int V){
   int indegree[V]={0};
   getIndegree(adj, V, indegree);
@@ -50,6 +50,35 @@ void topologicalSorting(vector<int> adj[], int V){
 }
 
 
+// topological sorting using dfs
+void dfs(vector<int> adj[], int s, vector<bool> &visited, stack<int> &st){
+  visited[s]=true;
+
+  for(int v: adj[s]){
+    if(!visited[v]){
+      dfs(adj, v, visited, st);
+    }
+  }
+
+  st.push(s);
+}
+
+void topologicalSortDFS(vector<int> adj[], int V){
+  vector<bool> visited(V, false);
+  stack<int> st;
+
+  for(int i=0;i<V;i++){
+    if(!visited[i]){
+      dfs(adj, i, visited, st);
+    }
+  }
+
+  while(!st.empty()){
+    cout<<st.top()<<" ";
+    st.pop();
+  }
+}
+
 int main(){
   #ifndef ONLINE_JUDGE
     freopen("input.txt","r",stdin);
@@ -67,6 +96,8 @@ int main(){
   int indegree[V]={0};
 
   topologicalSorting(adj, V);
+  cout<<endl;
+  topologicalSortDFS(adj, V);
 
   return 0;
 }
