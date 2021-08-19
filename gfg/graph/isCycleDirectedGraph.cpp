@@ -29,7 +29,6 @@ bool dfsCycle(vector<int> adj[], int s, vector<bool> &visited, vector<bool> &rec
 
 bool isCyclic(int V, vector<int> adj[])
 {
-  //	recursive soln
   vector<bool> visited(V, false);
   vector<bool> recSt(V, false);
 
@@ -38,9 +37,7 @@ bool isCyclic(int V, vector<int> adj[])
     if (!visited[i])
     {
       if (dfsCycle(adj, i, visited, recSt))
-      {
         return true;
-      }
     }
   }
   return false;
