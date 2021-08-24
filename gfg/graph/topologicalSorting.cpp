@@ -73,6 +73,7 @@ void topologicalSortDFS(vector<int> adj[], int V){
     }
   }
 
+  // this is for printing the topo sort
   while(!st.empty()){
     cout<<st.top()<<" ";
     st.pop();
