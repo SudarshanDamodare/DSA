@@ -49,7 +49,7 @@ int main(){
   int n,m,source;
   cin>>n>>m;
 
-  vector<pair<int,int>> adj[n+1]; // a-indexed adj list
+  vector<pair<int,int>> adj[n+1]; // 1-indexed adj list
   int u,v,wt;
 
   for(int i=0;i<m;i++){
