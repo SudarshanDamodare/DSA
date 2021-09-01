@@ -7,53 +7,18 @@ using namespace std;
 #define um unordered_map
 
 
-struct Item{
-  int productId;
-  int quantity;
-  int price;
-};
+int solve(vector<int> doll){
+  // sort(doll.begin(), doll.end(), greater<int>());
 
-int solution(struct Item shoplist[], int m){
-  if(m==0)
-    return -1;
   int res=0;
-
-  for(int i=0;i<m;i++){
-    res+=(shoplist[i].quantity*shoplist[i].price);
+  map<int, int, greater<int> > m;
+  for(int i=0;i<doll.size();i++){
+    m[doll[i]]++;
   }
-  return res;
-}
 
-int getSum(int a){
-  int res=0;
-  while(a){
-    res+=a%10;
-    a=a/10;
-  }
-  return res;
-}
-
-int getPrime(int a, int b, int n){
-  int i,j,flag;
-  int res=0;
-
-  for(i=a;i<=b;i++){
-    if(i==0 || i==1)
-      continue;
-    
-    flag=1;
-
-    for(j=2;j<=i/2;j++){
-      if(i%j==0){
-        flag=0;
-        break;
-      }
-    }
-
-    if(flag==1){
-      if(getSum(i)%n==0)
-        res++;
-    }
+  for(auto it: m){
+    // cout<<it.first<<" "<<it.second<<endl;
+    res=max(res, it.second);
   }
 
   return res;
@@ -66,6 +31,15 @@ int main(){
     freopen("output.txt","w",stdout);
   #endif
 
-  cout<<getPrime(1,15,2);
+  int t;cin>>t;
+  while(t--){
+    ll n;
+    cin>>n;
+    vector<int> a(n);
+    for(ll i=0;i<n;i++)
+      cin>>a[i];
+    cout<<solve(a)<<endl;
+  }
+
   return 0;
 }
