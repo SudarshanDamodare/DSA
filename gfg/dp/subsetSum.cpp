@@ -29,12 +29,19 @@ int subsetSum(int arr[], int n, int sum){
     }
   }
 
-  // for(int i=0;i<n+1;i++){
-  //   for(int j=0;j<sum+1;j++)
-  //     cout<<dp[i][j]<<" ";
-  //   cout<<endl;
-  // }
   return dp[n][sum];
+}
+
+
+int equalSumPartition(int arr[], int n){
+  int sum=0;
+  for(int i=0;i<n;i++)
+    sum+=arr[i];
+  
+  if(sum&1) // odd sum
+    return false;
+  
+  return subsetSum(arr, n, sum/2);
 }
 
 int main(){
@@ -43,8 +50,8 @@ int main(){
     freopen("../output.txt","w",stdout);
   #endif
 
-  int n=5;
-  int arr[]={2,3,8,7,10};
-  cout<<subsetSum(arr, n, 11);
+  int n=3;
+  int arr[]={2,3,8};
+  cout<<equalSumPartition(arr, n);
   return 0;
 }
