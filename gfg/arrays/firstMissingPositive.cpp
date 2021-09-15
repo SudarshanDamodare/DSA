@@ -4,6 +4,8 @@ using namespace std;
 #define pb push_back
 #define us unordered_set
 
+
+// this segregates the +ve and -ve nos. and return the index from where +ve nos. start
 int segregate(vector<int> &A){
   int n=A.size();
   int l=0,r=0;
@@ -17,6 +19,7 @@ int segregate(vector<int> &A){
   return l;
 }
 
+// this function finds the 1st +ve missing no.
 int firstMissing(vector<int> &A){
   int start=segregate(A);
   // for(auto x:A)
@@ -39,7 +42,7 @@ int firstMissing(vector<int> &A){
 int main(){
   #ifndef ONLINE_JUDGE
     freopen("input.txt","r",stdin);
-    freopen("output.txt","w",stdout);
+    freopen("../output.txt","w",stdout);
   #endif
 
   vector<int> A={1};
