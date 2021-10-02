@@ -81,7 +81,7 @@ int main(){
       maxi=students[i], m=cc;
     }
   }
- 
+
 
   for(int i=0;i<n;i++){
     if(students[i]==maxi) {cout<<i+1<<endl; break;}

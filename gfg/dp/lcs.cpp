@@ -45,7 +45,7 @@ int LCS(string x, string y){
 }
 
 
-// print LCS (longest common si=ubsequence between two strings)
+// print LCS (longest common subsequence between two strings)
 string printLCS(string x, string y){
   int n=x.size(), m=y.size();
 
