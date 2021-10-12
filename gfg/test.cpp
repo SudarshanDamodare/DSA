@@ -1,64 +1,41 @@
 #include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 #define endl "\n"
+#define FAST_IO  ios_base::sync_with_stdio(0);cin.tie(NULL);cout.tie(NULL)
 #define ll long long int
 #define pb push_back
 #define mp make_pair
 #define us unordered_set
 #define um unordered_map
+ll mod=1e9+7;
 
-int n,m;
-vector<int> adj[1001];
-int color[1001];
-set<int> h;
+// ll dp[1000000000001];
 
-int solve(int s){
-  queue<int> q;
-  q.push(s);
-  color[s]=1;
+// void solve(){
+//   dp[1]=1;
+//   dp[2]=2;
 
-  int cnt=0;
-
-  while(!q.empty()){
-    int node=q.front();
-    q.pop();
-
-    if(h.count(node)==0){
-      for(auto child: adj[node]){
-        if(h.count(child)==0 && color[child]==-1){
-          color[child]=1-color[node];
-          q.push(child);
-        }
-        else if(h.count(child)==0 && color[child]==color[node]){
-          cnt++; h.insert(child);
-        }
-      }
-    }
-  }
-  // cout<<*(h.begin());
-  return n-cnt;
-}
-
+//   for(int i=3;i<1000;i++)  dp[i]=(dp[i-1]+dp[i-2])%mod;
+// }
 
 int main(){
+  FAST_IO;
   #ifndef ONLINE_JUDGE
     freopen("input.txt","r",stdin);
     freopen("output.txt","w",stdout);
   #endif
 
-  cin>>n>>m;
-  int a,b;
-  for(int i=1;i<=m;i++){
-    cin>>a>>b;
-    adj[a].pb(b);
-    adj[b].pb(a);
+  int t;cin>>t;
+  // solve();
+  while(t--){
+    ll n; cin>>n;
+    ll dp[n+1];
+    dp[1]=1, dp[2]=2;
+    cout<<n<<" ";
+    for(int i=3;i<=n;i++)  dp[i]=((dp[i-1]%mod)+(dp[i-2]%mod))%mod;
+    cout<<dp[n]<<endl;
   }
 
-  // for(int i=1;i<=4;i++){
-  //   for(auto x: adj[i]) cout<<x<<" ";
-  //   cout<<endl;
-  // }
-  memset(color, -1, sizeof(color));
-  cout<<solve(1)<<endl;
   return 0;
 }
