@@ -18,6 +18,7 @@ int LIS(vector<int> v){
       dp[i]=1+dp[j];
   }
 
+  // this is for printing lis
   int res=dp[0], idx=0;
   for(int i=1;i<n;i++){
     res=max(res,dp[i]);
@@ -45,6 +46,36 @@ int LIS(vector<int> v){
   return res;
 }
 
+
+
+// Binary search approach
+int ceilIdx(int arr[], int l, int r, int x){
+  while(l<r){
+    int mid=l+(r-l)/2;
+    if(arr[mid]>=x) r=mid;
+    else  l=mid+1;
+  }
+
+  return r;
+}
+
+int lis(vector<int> v){
+  int n=v.size(), tail[n], len=1;
+  tail[0]=v[0];
+
+  for(int i=1;i<n;i++){
+    if(v[i]>tail[len-1]){
+      tail[len++]=v[i];
+    }
+    else{
+      int next=ceilIdx(tail,0,len-1,v[i]);
+      tail[next]=v[i];
+    }
+  }
+
+  return len;
+}
+
 int main(){
   #ifndef ONLINE_JUDGE
     freopen("input.txt","r",stdin);
@@ -52,6 +83,7 @@ int main(){
   #endif
 
   vector<int> v={5,8,7,1,9};
-  cout<<LIS(v);
+  cout<<LIS(v)<<endl;
+  cout<<lis(v)<<endl;
   return 0;
 }

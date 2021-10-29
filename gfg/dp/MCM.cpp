@@ -11,8 +11,7 @@ using namespace std;
 
 // recursive approach   --> this can be memoised
 int mcm(vector<int> v, int l, int r){
-  if(l>=r)
-    return 0;
+  if(l>=r)  return 0;
   
   int res=INT_MAX;
   for(int k=l;k<=r-1;k++){

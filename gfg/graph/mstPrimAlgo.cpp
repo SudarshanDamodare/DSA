@@ -59,6 +59,8 @@ void primsMST(int n, vector<pair<int,int>> adj[]){
   key[0]=0;
   pq.push({0,0});
 
+  int res=0;
+
   for(int count=0;count<n-1;count++){
     int u=pq.top().second;
     pq.pop();
@@ -78,16 +80,16 @@ void primsMST(int n, vector<pair<int,int>> adj[]){
 
   // printing the edges
   for(int i=1;i<n;i++)
-    cout<<parent[i]<<" - "<<i<<" \n";
-
+    {cout<<parent[i]<<" - "<<i<<" \n"; res+=key[i];}
+  cout<<res<<endl;
 }
 
 
 
 int main(){
   #ifndef ONLINE_JUDGE
-    freopen("input.txt","r",stdin);
-    freopen("output.txt","w",stdout);
+    freopen("../input.txt","r",stdin);
+    freopen("../output.txt","w",stdout);
   #endif
 
   int n,m;
@@ -100,7 +102,7 @@ int main(){
     adj[b].pb(mp(a,wt));
   }
 
-  prims1(n, adj);
+  primsMST(n, adj);
 
   return 0;
 }
