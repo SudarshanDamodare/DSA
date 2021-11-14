@@ -5,7 +5,7 @@ using namespace std;
 #define us unordered_set
 #define um unordered_map
 
-
+// infix to postfix
 int precedence(char c){
   if(c=='^')
     return 3;
@@ -24,7 +24,7 @@ string toPostfix(string s){
   stack<char> st;
 
   for(int i=0;i<s.size();i++){
-    if((s[i]>='a' && s[i]<='z') || (s[i]>='A' && s[i]<='Z')){
+    if((s[i]>='0' && s[i]<='9') || (s[i]>='A' && s[i]<='Z')){
       res+=s[i];
     }
     else if(s[i]=='('){
@@ -64,7 +64,7 @@ int main(){
     freopen("../output.txt","w",stdout);
   #endif
 
-  cout<<toPostfix("a^b^c")<<endl;
-  cout<<toPostfix("a+b/c+d*e")<<endl;
+  cout<<toPostfix("8+(7-9)*2")<<endl;
+  // cout<<toPostfix("a+b/c+d*e")<<endl;
   return 0;
 }

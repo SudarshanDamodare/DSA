@@ -19,7 +19,9 @@ class DisjointSet{
 
   int Find(int x){
     if(parent[x]==x)  return x;
-    return Find(parent[x]);
+    // return Find(parent[x]);
+    
+    return parent[x]=Find(parent[x]);   // path compression
   }
 
   // union bt rank
@@ -46,5 +48,6 @@ int main(){
   cout<<s.Find(5)<<endl;
   s.Union(2,4);
   cout<<s.Find(4)<<endl;
+  cout<<s.Find(2)<<endl;
   return 0;
 }

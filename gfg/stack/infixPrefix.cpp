@@ -5,7 +5,7 @@ using namespace std;
 #define us unordered_set
 #define um unordered_map
 
-
+// infix to prefix
 int precedence(char c){
   if(c=='^')
     return 3;
@@ -26,7 +26,7 @@ string toPrefix(string s){
   stack<char> st;
 
   for(int i=0;i<s.size();i++){
-    if((s[i]>='a' && s[i]<='z') || (s[i]>='A' && s[i]<='Z')){
+    if((s[i]>='0' && s[i]<='9')){
       res+=s[i];
     }
     else if(s[i]==')'){
@@ -70,9 +70,9 @@ int main(){
   // cout<<toPrefix("a+b/c+d*e")<<endl;
   // cout<<toPrefix("(a-b/c)*(a/k-l)")<<endl;
   // cout<<toPrefix("x+y*z")<<endl;
-  cout<<toPrefix("(x+y)*z")<<endl;
+  cout<<toPrefix("8+(7-9)*2")<<endl;
   // cout<<toPrefix("(x+y)*(z+w)")<<endl;
-  cout<<toPrefix("x+y*(z-w)")<<endl;
-  cout<<toPrefix("x+y*z/w+u")<<endl;
+  // cout<<toPrefix("x+y*(z-w)")<<endl;
+  // cout<<toPrefix("x+y*z/w+u")<<endl;
   return 0;
 }
