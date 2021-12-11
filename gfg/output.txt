@@ -1,4 +1,1 @@
-Aundh 22
-Baner 23
-Aundh 22
-Baner 23
+1 2 5 6 7 

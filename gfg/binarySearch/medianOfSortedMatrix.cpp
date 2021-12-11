@@ -31,8 +31,7 @@ int main(){
   cin>>n>>m;
 
   vector<vector<int> > A(n,vector<int>(m));
-  for(int i=0;i<n;i++)
-  for(int j=0;j<m;j++)  cin>>A[i][j];
+  for(int i=0;i<n;i++)  for(int j=0;j<m;j++)  cin>>A[i][j];
 
 
   int low=0, high=1e9;
