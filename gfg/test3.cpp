@@ -7,61 +7,58 @@ using namespace std;
 #define um unordered_map
 
 
-int dx[]={0,1,0,-1}, dy[]={1,0,-1,0};
-int cnt=0;
-
-bool isValid(int x, int y){
-  if(x>0 && x<=8 && y>0 && y<=8)  return true;
-  return false;
-}
-
-void bfs(int n, int start[][2], vector<vector<int>> &vis){
-  queue<pair<int,int>> q;
-  for(int i=0;i<n;i++){
-    q.push({start[i][0],start[i][1]});
-    vis[start[i][0]][start[i][1]]=1;
-    // cnt++;
-  }
-
-  while(!q.empty()){
-    int x=q.front().first, y=q.front().second;
-    q.pop();
-    cnt++;
-
-    for(int i=0;i<4;i++){
-      int nx=x+dx[i], ny=y+dy[i];
-      if(isValid(nx,ny) && !vis[nx][ny]){
-        q.push({nx,ny});
-        vis[nx][ny]=1;
-        // cnt++;
-      }
-    }
-  }
-}
-
-int solve(int n, int start[][2]){
-  vector<vector<int>> vis(9,vector<int>(9,0));
-  bfs(n,start,vis);
-
-  return cnt;
-}
-
 
 int main(){
   #ifndef ONLINE_JUDGE
     freopen("input.txt","r",stdin);
     freopen("output.txt","w",stdout);
   #endif
+  ll mod=1e9+7;
 
-  int n;
-  cin>>n;
-  int start[n][2];
+  ll n; cin>>n;
+  ll sum=0;
+  vector<ll> v(n);
+  for(ll i=0;i<n;i++) {cin>>v[i];sum+=v[i];}
+
+  ll x=sum/n;
+
+  vector<pair<ll,ll>> rem,temp;
+
   for(int i=0;i<n;i++){
-    cin>>start[i][0];
-    cin>>start[i][1];
+    if(v[i]>x){
+      rem.pb({i,v[i]-x});
+    }
+    if(v[i]<x){
+      temp.pb({i,x-v[i]});
+    }
   }
 
-  cout<<solve(n,start);
+  ll res=0;
+  if(rem.size()==0) {cout<<0<<endl;}
+  else{
+    ll j=0,i=(rem[0].first+1)%n;
+    
+    while(i!=rem[0].first){
+
+      if(v[i]<x){
+        if(x-v[i]<=rem[j].second){
+          rem[j].second-=x-v[i];
+          res=(res+(x-v[i])*((i-rem[j].first+n)%n))%mod;
+        }
+        else{
+          res=(res+(rem[j].second)*((i-rem[j].first+n)%n))%mod;
+          rem[j].second=0;
+        }
+
+        if(rem[j].second==0)j++;
+      }
+
+      i=(i+1)%n;
+    }
+    cout<<res<<endl;
+  }
+
+
 
   return 0;
 }

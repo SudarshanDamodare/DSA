@@ -17,6 +17,7 @@ int partition(int arr[], int l, int r){
 }
 
 void qSort(int arr[], int l, int r){
+  cout<<"c\n";
   if(l<r){
     int p=partition(arr, l , r);
     qSort(arr, l, p-1);
@@ -25,8 +26,12 @@ void qSort(int arr[], int l, int r){
 }
 
 int main(){
-  int a[] ={10,4,5,8,11,6,26};
-  qSort(a,0,6);
+  #ifndef ONLINE_JUDGE
+    freopen("../input.txt","r",stdin);
+    freopen("../output.txt","w",stdout);
+  #endif
+  int a[] ={15,10,12,3};
+  qSort(a,0,3);
   
   for(int i=0;i<7;i++)
     cout<<a[i]<<" ";
