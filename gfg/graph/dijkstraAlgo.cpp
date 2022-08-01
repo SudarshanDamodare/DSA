@@ -20,7 +20,7 @@ void dijkstra(int src, int n, vector<pair<int,int>> adj[]){
     int node=pq.top().second;
     pq.pop();
 
-    // traversing adjacents of the curr node
+    // traversing adjacents of the curr node and figuring out the shortest dist if possible
     for(auto it:adj[node]){
       int next=it.first;
       int nextDist=it.second;

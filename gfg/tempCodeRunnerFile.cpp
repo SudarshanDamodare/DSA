@@ -1,6 +1,25 @@
-if (j - 1 >= 0 && !visited[i][j - 1] && grid[i][j - 1] == 1)
-  {
-    visited[i][j] = 1;
-    pathRec(i - 1, j, grid, n, res, path + 'L', visited);
-    visited[i][j] = 0;
-  
+t solve(int idx, int prev, vector<vector<int>> &data){
+//   int maxi=INT_MIN;
+//   if(idx==0){
+//     for(int i=0;i<k;i++){
+//       if(i!=prev){
+//         maxi=max(maxi,data[idx][i]);
+//       }
+//     }
+//     return maxi;
+//   }
+
+//   if(dp[idx][prev]!=-1) {
+//     cout<<"hello\n";
+//     return dp[idx][prev];
+//   }
+
+//   for(int i=0;i<k;i++){
+//     int points = 0;
+//     if(i!=prev){
+//       points = data[idx][i] + solve(idx-1, i, data);
+//     }
+//     maxi=max(maxi,points);
+//   }
+//   return dp[idx][prev] = maxi;
+// }
